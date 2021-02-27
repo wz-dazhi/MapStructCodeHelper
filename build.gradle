@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
+        maven { url 'https://dl.bintray.com/jetbrains/intellij-plugin-service' }
+        maven { url 'https://dl.bintray.com/jetbrains/intellij-third-party-dependencies/' }
+    }
+    dependencies {
+        classpath "org.jetbrains.intellij.plugins:gradle-intellij-plugin:0.6.5"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.6.5'
+}
+
+group 'com.wz'
+version '1.0.0.RELEASE'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    implementation "org.thymeleaf:thymeleaf:3.0.12.RELEASE"
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version '2019.3.4'
+    // 依赖的插件
+    plugins = ['java']
+}
+//patchPluginXml {
+//    changeNotes """
+//      1.0.0<br>
+//      <em>generation map-struct convert interface code.</em>"""
+//}
